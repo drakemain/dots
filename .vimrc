@@ -51,7 +51,9 @@ let g:NERDTrimTrailingWhitespace=1
 
 let delimitMate_expand_cr=1
 
-colorscheme darkspectrum
+" colorscheme darkspectrum
+colorscheme gruvbox
+set background=dark
 
 :augroup numbertoggle
 :  autocmd!
