@@ -1,0 +1,110 @@
+" vi: fdm=marker
+
+" Initialization: {{{
+set nocompatible
+set encoding=utf-8
+set fenc=utf-8
+set termencoding=utf-8
+set nu rnu
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
+set hlsearch
+set incsearch
+set showcmd
+set smarttab
+set backspace=2
+set autoindent
+set smartindent
+syntax on
+
+" nu on insert, rnu on norm/vis
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
+if has('win32')
+  set rtp+=~/.vim
+endif
+
+set nocompatible
+filetype off
+
+" }}}
+
+" Plugins: {{{
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'w0rp/ale'
+Plugin 'cespare/vim-toml'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'itchyny/lightline.vim'
+Plugin 'itchyny/vim-gitbranch'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'alvan/vim-closetag'
+
+call vundle#end()
+filetype plugin indent on
+" }}}
+
+"Colors {{{
+colorscheme gruvbox
+set background=dark
+" }}}
+
+" {{{ Statusline
+  set laststatus=2
+  let g:lightline = {
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+        \ },
+        \ 'component_function': {
+        \   'gitbranch': 'gitbranch#name'
+        \ },
+        \ 'colorscheme': 'jellybeans',
+      \ }
+" }}}
+
+"Plugin Config {{{
+ " CtrlP: {{{
+ let g:ctrlp_user_command = [
+    \ '.git', 'cd %s && git ls-files . -co --exclude-standard',
+    \ 'find %s -type f'
+    \ ]
+ let g:ctrlp_open_new_file = 'r' 
+ " }}}
+ 
+ " YCM: {{
+   nnoremap <leader>jd :YcmCompleter GoTo<CR>
+   let delimitMate_expand_cr = 1
+ " }}
+ "
+ " delimitmate: {{
+   let delimitMate_expand_cr = 1
+ " }}
+ 
+ " Nerdtree: {{{
+   map <C-n> :NERDTreeToggle<CR>
+ " }}}
+ " {{{ Ale 
+
+  " {{{ typescript
+    let b:ale_linters = ['tslint']
+  " }}}
+
+ " }}}
+
+" }}}
