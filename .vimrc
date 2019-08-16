@@ -1,97 +1,133 @@
-source $VIMRUNTIME/vimrc_example.vim
+" vi: fdm=marker
 
-set encoding=utf-8
-
+" Initialization: {{{
 set nocompatible
-filetype plugin on
-set laststatus=2
-set tabstop=8
-set softtabstop=0
+set encoding=utf-8
+set fenc=utf-8
+set termencoding=utf-8
+set nu rnu
+set tabstop=2
+set shiftwidth=2
 set expandtab
-set shiftwidth=4
+set smarttab
+set hlsearch
+set incsearch
+set showcmd
 set smarttab
 set backspace=2
 set autoindent
 set smartindent
+syntax on
 
-if has("gui_running")
-    " Remove menu, tool and scrollbars
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions-=L
-    if has("gui_gtk2")
-        set guifont=Inconsolata\ 13
-    elseif has("gui_macvim")
-        set guifont=Menlo\ Regular:h14
-    elseif has("gui_win32")
-        set guifont=Consolas:h13:cANSI
-    endif
-endif
-
-set rtp+=$HOME/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'itchyny/lightline.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'w0rp/ale'
-Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/nerdcommenter'
-
-call vundle#end()
-filetype plugin indent on
-
-:set number relativenumber
-
-let g:NERDSpaceDelims=1
-let g:NERDTrimTrailingWhitespace=1
-
-let delimitMate_expand_cr=1
-
-" colorscheme darkspectrum
-colorscheme gruvbox
-set background=dark
-
+" nu on insert, rnu on norm/vis
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
-set diffexpr=MyDiff(test)
-function! MyDiff()
-    let opt = '-a --binary '
-    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-    let arg1 = v:fname_in
-    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-    let arg1 = substitute(arg1, '!', '\!', 'g')
-    let arg2 = v:fname_new
-    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-    let arg2 = substitute(arg2, '!', '\!', 'g')
-    let arg3 = v:fname_out
-    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-    let arg3 = substitute(arg3, '!', '\!', 'g')
-    if $VIMRUNTIME =~ ' '
-        if &sh =~ '\<cmd'
-            if empty(&shellxquote)
-                let l:shxq_sav = ''
-                set shellxquote&
-            endif
-            let cmd = '"' . $VIMRUNTIME . '\diff"'
-        else
-            let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-        endif
-    else
-        let cmd = $VIMRUNTIME . '\diff'
-    endif
-    let cmd = substitute(cmd, '!', '\!', 'g')
-    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
-    if exists('l:shxq_sav')
-        let &shellxquote=l:shxq_sav
-    endif
-endfunction
+if has('win32')
+  set rtp+=~/.vim
+endif
 
+set nocompatible
+filetype off
+
+" }}}
+
+" Plugins: {{{
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'w0rp/ale'
+Plugin 'cespare/vim-toml'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'itchyny/lightline.vim'
+Plugin 'itchyny/vim-gitbranch'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'alvan/vim-closetag'
+
+call vundle#end()
+filetype plugin indent on
+" }}}
+
+"Colors {{{
+colorscheme gruvbox
+set background=dark
+" }}}
+
+" {{{ Statusline
+  set laststatus=2
+  let g:lightline = {
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'gitbranch', 'readonly', 'fileanddir', 'modified' ] ]
+        \ },
+        \ 'inactive': {
+        \   'left': [ ['fileanddir'] ]
+        \ },
+        \ 'component_function': {
+        \   'gitbranch': 'gitbranch#name',
+        \   'fileanddir': 'LightlineDirFile'
+        \ },
+        \ 'component': {
+        \   'dirname': 'hello%:h:t'
+        \ },
+        \ 'colorscheme': 'jellybeans',
+      \ }
+
+  function! LightlineDirFile()
+    let dirname = expand('%:p:h:t')
+    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+    return dirname . '/' . filename
+  endfunction
+" }}}
+
+"Plugin Config {{{
+ " CtrlP: {{{
+ "let g:ctrlp_user_command = [
+    "\ '.git', 'cd %s && git ls-files . -co --exclude-standard',
+    "\ 'find %s -type f'
+    "\ ]
+ let g:ctrlp_open_new_file = 'r' 
+ let g:ctrlp_custom_ignore = {
+     \ 'file': '\v\.(exe|so|dll|o)$',
+     \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|dist)$'
+     \}
+ " }}}
+ 
+ " YCM: {{{
+   nnoremap <leader>jd :YcmCompleter GoTo<CR>
+   let delimitMate_expand_cr = 1
+   let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+   if !exists("g:ycm_semantic_triggers")
+     let g:ycm_semantic_triggers = {}
+   endif
+   let g:ycm_semantic_triggers['typescript'] = ['re!\w|\.|\:']
+ " }}}
+ "
+ " delimitmate: {{{
+   let delimitMate_expand_cr = 1
+ " }}}
+ 
+ " Nerdtree: {{{
+   map <C-n> :NERDTreeToggle<CR>
+ " }}}
+ "
+ " {{{ Ale 
+
+  " {{{ typescript
+    let b:ale_linters = ['tslint']
+  " }}}
+
+ " }}}
+
+" }}}
