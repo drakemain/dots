@@ -1,3 +1,5 @@
+" Config by Drake Main
+
 " gui configurations
 set guioptions-=T
 set guioptions-=m
