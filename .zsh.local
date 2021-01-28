@@ -1,0 +1,6 @@
+# Use this file to declare your own customizations.
+PROMPT='
+%F{blue}%n%F{white}@%F{blue}%m%f $(p_colored_path)$(p_envs)$(p_vcs)
+$(p_arrow) '
+
+alias ll='ls'
