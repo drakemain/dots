@@ -99,8 +99,8 @@ set background=dark
     "\ ]
  let g:ctrlp_open_new_file = 'r' 
  let g:ctrlp_custom_ignore = {
-     \ 'file': '\v\.(exe|so|dll|o)$',
-     \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|dist)$'
+     \ 'file': '\v\.(exe|so|dll|o|d)$',
+     \ 'dir':  '\.git$\|hg$\|svn$\|node_modules$\|dist$\|build$'
      \}
  " }}}
  
