@@ -14,7 +14,7 @@ set hlsearch
 set incsearch
 set showcmd
 set smarttab
-set backspace=2
+set backspace=indent,eol,start
 set autoindent
 set smartindent
 syntax on
