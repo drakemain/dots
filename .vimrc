@@ -106,14 +106,13 @@ set background=dark
  
  " YCM: {{{
    nnoremap <leader>jd :YcmCompleter GoTo<CR>
-   let delimitMate_expand_cr = 1
    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
    if !exists("g:ycm_semantic_triggers")
      let g:ycm_semantic_triggers = {}
    endif
    let g:ycm_semantic_triggers['typescript'] = ['re!\w|\.|\:']
  " }}}
- "
+
  " delimitmate: {{{
    let delimitMate_expand_cr = 1
  " }}}
@@ -121,11 +120,11 @@ set background=dark
  " Nerdtree: {{{
    map <C-n> :NERDTreeToggle<CR>
  " }}}
- "
+
  " {{{ Ale 
 
   " {{{ typescript
-    let b:ale_linters = ['tslint']
+    " let b:ale_linters = ['tslint']
   " }}}
 
  " }}}
