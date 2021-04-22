@@ -72,7 +72,7 @@ set background=dark
         \             [ 'gitbranch', 'readonly', 'fileanddir', 'modified' ] ]
         \ },
         \ 'inactive': {
-        \   'left': [ ['fileanddir'] ]
+        \   'left': [ ['readonly', 'fileanddir', 'modified'] ]
         \ },
         \ 'component_function': {
         \   'gitbranch': 'gitbranch#name',
