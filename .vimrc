@@ -33,6 +33,11 @@ endif
 set nocompatible
 filetype off
 
+noremap <silent> <C-t :tabnew<CR>
+noremap <silent> <A-1> :tabmove -<CR>
+noremap <silent> <A-3> :tabmove +<CR>
+noremap <A-q> gT
+noremap <A-e> gt
 " }}}
 
 " Plugins: {{{
