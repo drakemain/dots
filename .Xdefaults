@@ -23,6 +23,9 @@
 #define nord14 #A3BE8C
 #define nord15 #B48EAD
 
+urxvt*depth: 32
+urxvt*background: rgba:2e00/3400/4000/e800
+
 *.foreground:   nord4
 *.background:   nord0
 *.cursorColor:  nord4
@@ -54,8 +57,9 @@ URxvt.intensityStyles: false
 URxvt.urgentOnBell: true
 URxvt.saveLines: 1000
 URxvt.lineSpace: 1
-URxvt.font: xft:DejaVu Sans Mono:size=28
-URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=28
+!URxvt.font: xft:DejaVu Sans Mono:size=28
+!URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=28
+URxvt.font: xft:MesloLGS NF:size=22
 URxvt.perl-ext-common: default,vtwheel,clipboard,keyboard-select,fullscreen,resize-font
 URxvt.underlineURLs: true
 
