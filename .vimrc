@@ -17,6 +17,7 @@ set smarttab
 set backspace=indent,eol,start
 set autoindent
 set smartindent
+set scrolloff=3
 syntax on
 
 " nu on insert, rnu on norm/vis
