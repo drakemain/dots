@@ -66,7 +66,7 @@ filetype plugin indent on
 " }}}
 
 "Colors {{{
-colorscheme gruvbox
+colorscheme ayu
 set background=dark
 " }}}
 
@@ -87,7 +87,7 @@ set background=dark
         \ 'component': {
         \   'dirname': 'hello%:h:t'
         \ },
-        \ 'colorscheme': 'jellybeans',
+        \ 'colorscheme': 'ayu_dark'
       \ }
 
   function! LightlineDirFile()
