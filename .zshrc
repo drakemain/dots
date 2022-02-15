@@ -1,131 +1,32 @@
-# determine path to dots dir
-export DOTSPATH="$(cd $(dirname $(dirname $(readlink -f ${(%):-%N}))); pwd)"
+# Created by Drake for 5.8
 
-# TODO
-# Warn when expected programs/packages aren't available.
+PROMPT='%F{blue}%2~ %#%F{white}⟫ '
 
-# When setting up for Emacs Tramp, set the prompt to something simple that it
-# can detect and disable superfluous features in order to optimize for speed.
-if [[ "$TERM" == "dumb" ]]; then
-  unsetopt zle
-  unsetopt prompt_cr
-  unsetopt prompt_subst
+# Report command running time if it is more than 3 seconds
+REPORTTIME=3
+# Keep a lot of history
+HISTFILE=~/.zhistory
+HISTSIZE=5000
+SAVEHIST=5000
+# Add commands to history as they are entered, don't wait for shell to exit
+setopt INC_APPEND_HISTORY
+# Also remember command start time and duration
+setopt EXTENDED_HISTORY
+# Do not keep duplicate commands in history
+setopt HIST_IGNORE_ALL_DUPS
+# Do not remember commands that start with a whitespace
+setopt HIST_IGNORE_SPACE
+# Correct spelling of all arguments in the command line
+setopt CORRECT_ALL
+# Enable autocompletion
+zstyle ':completion:*' completer _complete _correct _approximate
 
-  if whence -w precmd >/dev/null; then
-    unfunction precmd
-  fi
+alias pacup="pacman -Syu"
+alias pacin="pacman -Sy"
+alias pacun="pacman -Rs"
+alias ls="ls -h --color=auto"
+alias ll="ls -lh --color=auto"
 
-  if whence -w preexec >/dev/null; then
-    unfunction preexec
-  fi
-
-  PS1='$ '
-
-  return
-fi
-
-if [[ -f "$DOTSPATH/.theme.dark" ]]; then
-  export USE_SOLARIZED_DARK=1
-fi
-
-# if TMUX_FZF is set, we're only interested in loading the fzf functions
-# everything else will just slow us down
-if [[ -n "$TMUX_FZF" ]]; then
-  source $DOTSPATH/zsh/zsh/fzf.zsh
-  return
-fi
-
-fpath=(
-  "$DOTSPATH/zsh/zsh/comp"
-  "${fpath[@]}"
-)
-
-autoload -U compinit bashcompinit promptinit colors select-word-style
-select-word-style bash
-compinit -i
-bashcompinit
-promptinit
-colors
-
-# history
-export HISTFILE="$HOME/.zsh_history"
-export HISTSIZE=10000
-export SAVEHIST=$HISTSIZE
-
-setopt inc_append_history
-setopt hist_ignore_space
-setopt append_history
-setopt hist_ignore_dups
-setopt share_history
-setopt extendedglob
-setopt hist_reduce_blanks
-setopt hist_verify
-
-# env vars
-export EDITOR=vim
-export VISUAL=vim
-
-# zplug
-export ZPLUG_HOME=$DOTSPATH/zsh/zsh/zplug
-
-if [[ ! -d $ZPLUG_HOME ]]; then
-  git clone https://github.com/zplug/zplug $ZPLUG_HOME
-fi
-
-source $ZPLUG_HOME/init.zsh
-
-zplug "zplug/zplug"
-
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-completions"
-
-zplug "plugins/command-not-found", from:oh-my-zsh
-
-zplug "lukechilds/zsh-nvm"
-zplug "lukechilds/zsh-better-npm-completion"
-
-zplug "knu/zsh-manydots-magic", use:manydots-magic, lazy:true
-
-zplug "b4b4r07/enhancd", use:init.sh
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  fi
-fi
-
-zplug load
-
-command_exists() {
-  (( $+commands[$1]))
-}
-
-# strict control over source order
-sources=(
-  'hub'
-  'path'
-  'chruby'
-  'vcsinfo'
-  'prompt'
-  'completions'
-  'zle'
-  'functions'
-  'alias'
-  'linux'
-  'osx'
-  'gtags'
-  'gnome-keyring'
-  'fzf'
-  'highlight'
-  'enhancd'
-)
-
-for src in $sources; do
-  source $DOTSPATH/zsh/zsh/$src.zsh
-done
-
-if [[ -f ~/.zsh.local ]]; then
-  source ~/.zsh.local
-fi
+export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
+export TERM=screen-256color       # for a tmux -2 session (also for screen)
+export TERM=rxvt-unicode-256color # for a colorful rxvt unicode session
