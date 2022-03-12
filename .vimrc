@@ -87,7 +87,7 @@ set background=dark
         \ 'component': {
         \   'dirname': 'hello%:h:t'
         \ },
-        \ 'colorscheme': 'ayu_dark'
+        \ 'colorscheme': 'ayu_mirage'
       \ }
 
   function! LightlineDirFile()
