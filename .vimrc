@@ -136,4 +136,9 @@ set background=dark
 
  " }}}
 
+ " vim-closetag {{{
+ " prevent conflict with delimitmate
+  au FileType html let b:delimitMate_matchpairs = "(:),[:],{:}"
+ " }}}
+
 " }}}
