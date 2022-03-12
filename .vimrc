@@ -6,8 +6,8 @@ set encoding=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 set nu rnu
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set smarttab
 set hlsearch
