@@ -60,6 +60,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'alvan/vim-closetag'
+Plugin 'ap/vim-css-color'
 
 call vundle#end()
 filetype plugin indent on
@@ -115,6 +116,7 @@ set background=dark
    nnoremap <leader>fi :YcmCompleter FixIt<CR>
    nnoremap <leader>dd :YcmShowDetailedDiagnostic<CR>
    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+   let g:ycm_autoclose_preview_window_after_insertion = 1
    let g:ycm_goto_buffer_command = 'split-or-existing-window'
    if !exists("g:ycm_semantic_triggers")
      let g:ycm_semantic_triggers = {}
