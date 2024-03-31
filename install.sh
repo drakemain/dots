@@ -4,29 +4,42 @@ DOTS_DIR=$(pwd)
 
 # -- Arch
 
-sudo pacman -S gvim cmake clang curl wget zsh
+# install base packages
+sudo pacman -Syw gvim cmake clang curl wget zsh git rustup man-db
 
-# install yay
-# git clone https://aur.archlinux.org/yay.git /tmp/yay
-# cd /tmp/yay
-# makepkg -si
+#install omzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+chsh -s /bin/zsh
+
+# copy configs
+mkdir -p ~/.config/alacritty/
+cp ./alacritty.toml ~/.config/alacritty/alacritty.toml
+
+cp ./.zshrc ~/.zshrc
+cp -r ./.oh-my-zsh.local ~/.oh-my-zsh.local
+cp ./.vimrc ~/.vimrc
+cp ./.gvimrc ~/.gvimrc
+cp ./.tmux.conf ~/.tmux.conf
+cp ./.Xdefaults ~/.Xdefaults
+cp ./.gitconfig ~/.gitconfig
+cp ./ssh-config ~/.ssh/config
+
+# install rust
+rustup default stable
+
+# install paru
+git clone https://aur.archlinux.org/paru.git /tmp/paru
+cd /tmp/paru && makepkg -si
 
 cd DOTS_DIR
 # -- /Arch
 
 # install nvm, node lts
-# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-# nvm install --lts
-
-#install rust
-# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install --lts
 
 mkdir -p ~/.vim/bundle
 mkdir -p ~/.config/urxvt/colorschemes
-
-cp ./.vimrc ~/.vimrc
-cp ./.gvimrc ~/.gvimrc
-# cp ./.zshrc
 
 cd ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ./Vundle.vim

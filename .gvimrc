@@ -4,7 +4,7 @@
 set guioptions-=T
 set guioptions-=m
 set guioptions-=rL
-set guifont=DejaVu\ Sans\ Mono\ 12
+set guifont=DejaVu\ Sans\ Mono\ 21
 "set lines=25 columns=85
 
 if has('gui_macvim')

@@ -3,7 +3,7 @@
 " Initialization: {{{
 set nocompatible
 set encoding=utf-8
-set fenc=utf-8
+"set fenc=utf-8
 set termencoding=utf-8
 set nu rnu
 set tabstop=2
@@ -61,6 +61,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'alvan/vim-closetag'
 Plugin 'ap/vim-css-color'
+Plugin 'tpope/vim-fugitive'
+Plugin 'github/copilot.vim'
+Plugin 'habamax/vim-godot'
 
 call vundle#end()
 filetype plugin indent on
@@ -75,7 +78,7 @@ set background=dark
   set laststatus=2
   let g:lightline = {
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ],
+        \   'left': [ [ 'mode', '%{FugitiveStatusline()}', 'paste' ],
         \             [ 'gitbranch', 'readonly', 'fileanddir', 'modified' ] ]
         \ },
         \ 'inactive': {
@@ -107,8 +110,12 @@ set background=dark
  let g:ctrlp_open_new_file = 'r' 
  let g:ctrlp_custom_ignore = {
      \ 'file': '\v\.(exe|so|dll|o|d)$',
-     \ 'dir':  '\.git$\|hg$\|svn$\|node_modules$\|dist$\|build$'
+     \ 'dir':  '.git\|hg\|svn\|node_modules\|dist\|build\|target'
      \}
+ " }}}
+
+ " Fugitive: {{{
+   nnoremap <leader>gd :Gvdiffsplit<CR>
  " }}}
  
  " YCM: {{{

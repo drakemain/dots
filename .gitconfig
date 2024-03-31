@@ -1,0 +1,15 @@
+[user]
+	email = drakemain.dev@gmail.com
+	name = Drake Main
+	signingkey = DCB1C9117971E710
+[commit]
+	gpgsign = true
+[core]
+	editor = vim
+[diff]
+	tool = vimdiff
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

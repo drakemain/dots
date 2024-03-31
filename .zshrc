@@ -1,32 +1,24 @@
-# Created by Drake for 5.8
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH=$HOME/.cargo/bin:$PYENV_ROOT:$HOME/scripts:$PATH
+export LANG=en_US.UTF-8
 
-PROMPT='%F{blue}%2~ %#%F{white}⟫ '
+source ~/.oh-my-zsh.local/theme.zsh-theme
 
-# Report command running time if it is more than 3 seconds
-REPORTTIME=3
-# Keep a lot of history
-HISTFILE=~/.zhistory
-HISTSIZE=5000
-SAVEHIST=5000
-# Add commands to history as they are entered, don't wait for shell to exit
-setopt INC_APPEND_HISTORY
-# Also remember command start time and duration
-setopt EXTENDED_HISTORY
-# Do not keep duplicate commands in history
-setopt HIST_IGNORE_ALL_DUPS
-# Do not remember commands that start with a whitespace
-setopt HIST_IGNORE_SPACE
-# Correct spelling of all arguments in the command line
-setopt CORRECT_ALL
-# Enable autocompletion
-zstyle ':completion:*' completer _complete _correct _approximate
-
-alias pacup="pacman -Syu"
-alias pacin="pacman -Sy"
-alias pacun="pacman -Rs"
+alias pacup="sudo pacman -Syu"
+alias pacin="sudo pacman -Sy"
+alias pacun="sudo pacman -Rs"
 alias ls="ls -h --color=auto"
 alias ll="ls -lh --color=auto"
+alias fix-playback="killall pulseaudio; rm -r ~/.config/pulse/*"
 
-export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
-export TERM=screen-256color       # for a tmux -2 session (also for screen)
-export TERM=rxvt-unicode-256color # for a colorful rxvt unicode session
+# pyenv
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+# nvm
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/bash_completion
+source /usr/share/nvm/install-nvm-exec
+
+export gpg_tty=$(tty)

@@ -1,0 +1,6 @@
+Host pi-dev
+  HostName 192.168.50.105
+
+Host hf.co
+  IdentityFile ~/.ssh/ed25519-alt
+  IdentitiesOnly yes
