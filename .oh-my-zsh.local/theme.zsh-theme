@@ -1,10 +1,14 @@
 export ZSH="$HOME/.oh-my-zsh"
+
+# Load Dark Forest theme colors
+source ~/.oh-my-zsh.local/forest-theme.zsh
+
 ZSH_THEME="agnoster"
 source $ZSH/oh-my-zsh.sh
 
 # ensure current directory (not full path) is shown on the prompt
 prompt_dir() {
-  prompt_segment blue black '%c'
+  prompt_segment "$AGNOSTER_DIR_BG" "$AGNOSTER_DIR_FG" '%c'
 }
 
 prompt_context() {

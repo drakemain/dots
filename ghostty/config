@@ -1,0 +1,40 @@
+# Dark Forest Glassmorphism Theme
+
+# Font
+font-family = Iosevka Nerd Font Mono
+font-size = 21
+
+# Window
+window-decoration = true
+window-padding-x = 8
+window-padding-y = 8
+window-theme = dark
+
+# Glassmorphism effect
+background-opacity = 0.75
+background-blur = 30
+custom-shader = ~/.config/ghostty/shaders/forest-cursor.glsl
+
+# Colors
+background = 1a1f1a
+foreground = d4d9c7
+
+# Normal colors
+palette = 0=#0f140f
+palette = 1=#b85c5c
+palette = 2=#6b8558
+palette = 3=#a88d5a
+palette = 4=#5d7a8a
+palette = 5=#8a6e94
+palette = 6=#5e8888
+palette = 7=#b8bcaa
+
+# Bright colors
+palette = 8=#3d4a3d
+palette = 9=#c96b6b
+palette = 10=#7a9a65
+palette = 11=#b89a65
+palette = 12=#6d8fa0
+palette = 13=#9d82a8
+palette = 14=#739999
+palette = 15=#e8ead6
