@@ -1,7 +1,7 @@
 [user]
 	email = drakemain.dev@gmail.com
 	name = Drake Main
-	signingkey = DCB1C9117971E710
+	signingkey = 437FC29E5558A482
 [commit]
 	gpgsign = true
 [core]

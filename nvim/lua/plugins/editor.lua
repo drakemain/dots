@@ -47,5 +47,5 @@ return {
   -- Dependencies
   { "nvim-lua/plenary.nvim" },
   { "nvim-tree/nvim-web-devicons" },
-  { "tpope/vim-sleuth" },
+  -- { "tpope/vim-sleuth" },  -- Disabled: conflicts with treesitter indent
 }
