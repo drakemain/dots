@@ -89,6 +89,18 @@ if [ "$MODE" = "pull" ]; then
   sync_dir ~/.config/nvim ./nvim
   sync_dir ~/.config/ghostty ./ghostty
 
+  # KDE Plasma configs
+  if command -v plasmashell &> /dev/null; then
+    sync_file ~/.config/kdeglobals ./plasma/kdeglobals
+    sync_file ~/.config/kwinrc ./plasma/kwinrc
+    sync_file ~/.config/plasma-org.kde.plasma.desktop-appletsrc ./plasma/plasma-org.kde.plasma.desktop-appletsrc
+    sync_file ~/.config/plasmarc ./plasma/plasmarc
+    sync_file ~/.config/plasmashellrc ./plasma/plasmashellrc
+    sync_file ~/.config/kglobalshortcutsrc ./plasma/kglobalshortcutsrc
+    sync_file ~/.config/kwinoutputconfig.json ./plasma/kwinoutputconfig.json
+    sync_file ~/.config/plasmanotifyrc ./plasma/plasmanotifyrc
+  fi
+
 elif [ "$MODE" = "push" ]; then
   # Push from repo to home
   sync_file ./.zshrc ~/.zshrc
@@ -109,6 +121,18 @@ elif [ "$MODE" = "push" ]; then
 
   if command -v neovide &> /dev/null && [ -d ./neovide ]; then
     sync_dir ./neovide ~/.config/neovide
+  fi
+
+  # KDE Plasma configs
+  if command -v plasmashell &> /dev/null && [ -d ./plasma ]; then
+    sync_file ./plasma/kdeglobals ~/.config/kdeglobals
+    sync_file ./plasma/kwinrc ~/.config/kwinrc
+    sync_file ./plasma/plasma-org.kde.plasma.desktop-appletsrc ~/.config/plasma-org.kde.plasma.desktop-appletsrc
+    sync_file ./plasma/plasmarc ~/.config/plasmarc
+    sync_file ./plasma/plasmashellrc ~/.config/plasmashellrc
+    sync_file ./plasma/kglobalshortcutsrc ~/.config/kglobalshortcutsrc
+    sync_file ./plasma/kwinoutputconfig.json ~/.config/kwinoutputconfig.json
+    sync_file ./plasma/plasmanotifyrc ~/.config/plasmanotifyrc
   fi
 fi
 

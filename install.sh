@@ -42,6 +42,7 @@ cp ./.Xdefaults ~/.Xdefaults
 cp ./.gitconfig ~/.gitconfig
 cp ./ssh-config ~/.ssh/config
 cp -r nvim/* ~/.config/nvim/
+cp ./plasma/* ~/.config/
 
 # install rust
 rustup default stable
