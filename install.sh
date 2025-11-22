@@ -11,6 +11,26 @@ sudo pacman -Sy cmake clang curl wget zsh git rustup man-db neovim neovide ghost
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s /bin/zsh
 
+# Check if GPG key exists, if not generate one
+if ! gpg --list-secret-keys --keyid-format=long | grep -q "sec"; then
+    echo "No GPG key found. Generating ed25519 key..."
+
+    # Generate key non-interactively
+    gpg --batch --passphrase '' --quick-gen-key "Drake Main <drakemain.dev@gmail.com>" ed25519 sign never
+
+    echo "GPG key generated successfully."
+else
+    echo "Existing GPG key found."
+fi
+
+# Get the signing key ID
+GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format=long | grep "sec" | head -n 1 | awk '{print $2}' | cut -d'/' -f2)
+
+echo "Using GPG key: $GPG_KEY_ID"
+
+# Update .gitconfig with the GPG key before copying
+sed -i "s/signingkey = .*/signingkey = $GPG_KEY_ID/" ./.gitconfig
+
 # copy configs
 mkdir -p ~/.config/nvim/
 mkdir -p ~/.config/ghostty/
