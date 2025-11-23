@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Dark Forest",
+  "version": "1.0",
+  "description": "Dark Forest glassmorphism theme matching nvim/ghostty/zsh configuration",
+  "theme": {
+    "colors": {
+      "frame": [15, 20, 15],
+      "frame_inactive": [15, 20, 15],
+      "toolbar": [26, 31, 26],
+      "tab_text": [232, 234, 214],
+      "tab_background_text": [184, 188, 170],
+      "tab_background_text_inactive": [107, 133, 88],
+      "tab_background_text_incognito": [232, 234, 214],
+      "tab_background_text_incognito_inactive": [107, 133, 88],
+      "bookmark_text": [232, 234, 214],
+      "ntp_background": [26, 31, 26],
+      "ntp_text": [212, 217, 199],
+      "ntp_link": [115, 153, 152],
+      "ntp_header": [15, 20, 15],
+      "button_background": [61, 74, 61],
+      "omnibox_background": [15, 20, 15],
+      "omnibox_text": [232, 234, 214]
+    },
+    "tints": {
+      "buttons": [0.0, 0.15, 0.35],
+      "frame": [0.0, 0.0, 0.0],
+      "frame_inactive": [0.0, 0.0, 0.0],
+      "frame_incognito": [0.0, 0.0, 0.0],
+      "frame_incognito_inactive": [0.0, 0.0, 0.0],
+      "background_tab": [-1.0, 0.4, 0.4]
+    },
+    "properties": {
+      "ntp_background_alignment": "center",
+      "ntp_background_repeat": "no-repeat"
+    }
+  }
+}
