@@ -1,7 +1,7 @@
 [user]
-	email = drakemain.dev@gmail.com
+	email = drakemain@protonmail.com
 	name = Drake Main
-	signingkey =
+	signingkey = 
 [commit]
 	gpgsign = true
 [core]
