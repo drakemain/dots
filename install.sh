@@ -5,7 +5,7 @@ DOTS_DIR=$(pwd)
 # -- Arch
 
 # install base packages
-sudo pacman -Sy cmake clang curl wget zsh git rustup man-db neovim neovide ghostty
+sudo pacman -Sy cmake clang curl wget zsh git rustup man-db neovim neovide ghostty fakeroot debugedit
 
 #install omzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -16,7 +16,7 @@ if ! gpg --list-secret-keys --keyid-format=long | grep -q "sec"; then
     echo "No GPG key found. Generating ed25519 key..."
 
     # Generate key non-interactively
-    gpg --batch --passphrase '' --quick-gen-key "Drake Main <drakemain.dev@gmail.com>" ed25519 sign never
+    gpg --batch --passphrase '' --quick-gen-key "Drake Main <drakemain@protonmail.com>" ed25519 sign never
 
     echo "GPG key generated successfully."
 else
