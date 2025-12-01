@@ -99,6 +99,7 @@ if [ "$MODE" = "pull" ]; then
     sync_file ~/.config/kglobalshortcutsrc ./plasma/kglobalshortcutsrc
     sync_file ~/.config/kwinoutputconfig.json ./plasma/kwinoutputconfig.json
     sync_file ~/.config/plasmanotifyrc ./plasma/plasmanotifyrc
+    sync_dir ~/.local/share/color-schemes ./plasma/color-schemes
   fi
 
 elif [ "$MODE" = "push" ]; then
@@ -133,6 +134,7 @@ elif [ "$MODE" = "push" ]; then
     sync_file ./plasma/kglobalshortcutsrc ~/.config/kglobalshortcutsrc
     sync_file ./plasma/kwinoutputconfig.json ~/.config/kwinoutputconfig.json
     sync_file ./plasma/plasmanotifyrc ~/.config/plasmanotifyrc
+    sync_dir ./plasma/color-schemes ~/.local/share/color-schemes
   fi
 fi
 

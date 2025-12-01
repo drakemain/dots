@@ -42,7 +42,9 @@ cp ./.Xdefaults ~/.Xdefaults
 cp ./.gitconfig ~/.gitconfig
 cp ./ssh-config ~/.ssh/config
 cp -r nvim/* ~/.config/nvim/
-cp ./plasma/* ~/.config/
+cp ./plasma/*.* ~/.config/
+mkdir -p ~/.local/share/color-schemes/
+cp ./plasma/color-schemes/* ~/.local/share/color-schemes/
 
 # install rust
 rustup default stable
