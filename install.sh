@@ -5,7 +5,7 @@ DOTS_DIR=$(pwd)
 # -- Arch
 
 # install base packages
-sudo pacman -Sy cmake clang curl wget zsh git rustup man-db neovim neovide ghostty fakeroot debugedit
+sudo pacman -Sy cmake clang curl wget zsh git rustup man-db neovim neovide ghostty fakeroot debugedit stylua
 
 #install omzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -48,6 +48,7 @@ cp ./plasma/color-schemes/* ~/.local/share/color-schemes/
 
 # install rust
 rustup default stable
+rustup component add rust-analyzer
 
 # install paru
 git clone https://aur.archlinux.org/paru.git /tmp/paru
