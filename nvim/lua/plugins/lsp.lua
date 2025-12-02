@@ -1,37 +1,81 @@
 -- LSP and Completion Plugins
 return {
+  -- Mason for installing LSP servers and tools
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      {"williamboman/mason.nvim", config = true},
-      "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-      {
-        'j-hui/fidget.nvim',
-        config = function()
-          require('fidget').setup({
-            notification = {
-              window = {
-                avoid = { 'NvimTree' }
-              }
-            }
-          })
-        end
-      },
-    },
+    "williamboman/mason.nvim",
+    config = true,
+  },
+
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "williamboman/mason.nvim" },
     config = function()
-      -- Language servers
-      local language_servers = {
-        clangd = {},
-        lua_ls = {
-          diagnostics = {globals = {'vim'}},
-          workspace = {library = vim.api.nvim_get_runtime_file("", true)}
-        },
-      }
+      require('mason-tool-installer').setup({
+        -- Only install lua-language-server via Mason
+        -- clangd and stylua are installed system-wide
+        ensure_installed = { 'lua-language-server' }
+      })
+    end,
+  },
+
+  -- Fidget for LSP progress notifications
+  {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup({
+        notification = {
+          window = {
+            avoid = { 'NvimTree' }
+          }
+        }
+      })
+    end
+  },
+
+  -- Native LSP configuration (Neovim 0.11+)
+  {
+    "hrsh7th/cmp-nvim-lsp",
+    config = function()
+      -- Get capabilities from nvim-cmp
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      -- Global LSP configuration for all servers
+      vim.lsp.config('*', {
+        capabilities = capabilities,
+        root_markers = { '.git' },
+      })
+
+      -- Clangd configuration (uses system-installed clangd)
+      vim.lsp.config('clangd', {
+        cmd = { 'clangd', '--background-index' },
+        filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
+        root_markers = { 'compile_commands.json', 'compile_flags.txt', '.clangd', '.git' },
+      })
+
+      -- Lua language server configuration
+      vim.lsp.config('lua_ls', {
+        cmd = { 'lua-language-server' },
+        filetypes = { 'lua' },
+        root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', '.git' },
+        settings = {
+          Lua = {
+            runtime = { version = 'LuaJIT' },
+            diagnostics = { globals = { 'vim' } },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true),
+              checkThirdParty = false,
+            },
+            telemetry = { enable = false },
+          }
+        }
+      })
+
+      -- Enable the language servers
+      vim.lsp.enable({ 'clangd', 'lua_ls' })
 
       -- LSP attach callback
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfigOnAttach', {clear=true}),
+        group = vim.api.nvim_create_augroup('UserLspConfigOnAttach', { clear = true }),
         callback = function(attach_event)
           _G.setup_lsp_keymaps(attach_event.buf)
 
@@ -59,34 +103,12 @@ return {
         group = vim.api.nvim_create_augroup('UserLspConfigOnDetach', { clear = true }),
         callback = function(detach_event)
           vim.lsp.buf.clear_references()
-          vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = detach_event.buf }
-        end,
-      })
-
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
-      local ensure_installed = vim.tbl_keys(language_servers or {})
-      vim.list_extend(ensure_installed, {'stylua'})
-
-      require('mason').setup()
-      require('mason-tool-installer').setup({
-        ensure_installed = ensure_installed
-      })
-      require('mason-lspconfig').setup({
-        automatic_installation = true,
-        handlers = {
-          function(server_name)
-            -- Skip rust_analyzer - it's handled by rustaceanvim
-            if server_name == "rust_analyzer" then
-              return
-            end
-
-            local server = language_servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+          -- Only clear if the group exists
+          local ok = pcall(vim.api.nvim_get_autocmds, { group = 'kickstart-lsp-highlight', buffer = detach_event.buf })
+          if ok then
+            vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = detach_event.buf }
           end
-        }
+        end,
       })
     end,
   },

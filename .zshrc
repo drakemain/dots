@@ -1,7 +1,7 @@
 # Environment variables
 export PYENV_ROOT="$HOME/.pyenv"
 export NVM_DIR="$HOME/.nvm"
-export PATH=$HOME/.cargo/bin:$PYENV_ROOT:$HOME/scripts:$PATH
+export PATH=$HOME/.cargo/bin:$PYENV_ROOT:$HOME/scripts:$PATH:$HOME/.local/bin
 export LANG=en_US.UTF-8
 export LIBCLANG_PATH=/usr/lib/libclang.so
 export gpg_tty=$(tty)
