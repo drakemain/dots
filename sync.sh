@@ -83,8 +83,13 @@ if [ "$MODE" = "pull" ]; then
   sync_file ~/.zshrc ./.zshrc
   sync_file ~/.vimrc ./.vimrc
   sync_file ~/.Xdefaults ./.Xdefaults
-  sync_file ~/.gitconfig ./.gitconfig
   sync_file ~/.ssh/config ./ssh-config
+
+  # Sync .gitconfig but clear the signingkey (set per-machine by install.sh)
+  sync_file ~/.gitconfig ./.gitconfig
+  if [ -f ./.gitconfig ]; then
+    sed -i 's/^\(\s*signingkey\s*=\).*/\1 /' ./.gitconfig
+  fi
   sync_dir ~/.oh-my-zsh.local ./.oh-my-zsh.local
   sync_dir ~/.config/nvim ./nvim
   sync_dir ~/.config/ghostty ./ghostty
@@ -107,8 +112,14 @@ elif [ "$MODE" = "push" ]; then
   sync_file ./.zshrc ~/.zshrc
   sync_file ./.vimrc ~/.vimrc
   sync_file ./.Xdefaults ~/.Xdefaults
-  sync_file ./.gitconfig ~/.gitconfig
   sync_file ./ssh-config ~/.ssh/config
+
+  # Sync .gitconfig but preserve the system's signingkey
+  SYSTEM_SIGNINGKEY=$(grep -E '^\s*signingkey\s*=' ~/.gitconfig 2>/dev/null)
+  sync_file ./.gitconfig ~/.gitconfig
+  if [ -n "$SYSTEM_SIGNINGKEY" ] && [ -f ~/.gitconfig ]; then
+    sed -i "s/^\s*signingkey\s*=.*/$SYSTEM_SIGNINGKEY/" ~/.gitconfig
+  fi
   sync_dir ./.oh-my-zsh.local ~/.oh-my-zsh.local
 
   # Conditional syncs (only if application is installed)
