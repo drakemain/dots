@@ -36,7 +36,6 @@
                 "edrPolicy": "always",
                 "highDynamicRange": false,
                 "iccProfilePath": "",
-                "maxBitsPerColor": 0,
                 "mode": {
                     "height": 2160,
                     "refreshRate": 59997,
@@ -66,7 +65,6 @@
                 "edrPolicy": "always",
                 "highDynamicRange": false,
                 "iccProfilePath": "",
-                "maxBitsPerColor": 0,
                 "maxPeakBrightnessOverride": 190,
                 "mode": {
                     "height": 1440,
@@ -97,7 +95,6 @@
                 "edrPolicy": "always",
                 "highDynamicRange": true,
                 "iccProfilePath": "",
-                "maxBitsPerColor": 0,
                 "mode": {
                     "height": 1440,
                     "refreshRate": 143973,
@@ -168,6 +165,36 @@
                 "sdrGamutWideness": 0,
                 "transform": "Normal",
                 "uuid": "c2a6bb73-901a-4569-a16c-45bd8bf21aa4",
+                "vrrPolicy": "Never",
+                "wideColorGamut": false
+            },
+            {
+                "allowDdcCi": true,
+                "allowSdrSoftwareBrightness": false,
+                "autoRotation": "InTabletMode",
+                "brightness": 0.5,
+                "colorPowerTradeoff": "PreferEfficiency",
+                "colorProfileSource": "sRGB",
+                "connectorName": "eDP-1",
+                "detectedDdcCi": false,
+                "edidHash": "04926c8258a45cf1ddf14f01b2342b77",
+                "edidIdentifier": "SDC 16903 0 0 2024 0",
+                "edrPolicy": "always",
+                "highDynamicRange": false,
+                "iccProfilePath": "",
+                "maxBitsPerColor": 0,
+                "mode": {
+                    "height": 1800,
+                    "refreshRate": 120000,
+                    "width": 2880
+                },
+                "overscan": 0,
+                "rgbRange": "Automatic",
+                "scale": 1.6,
+                "sdrBrightness": 496,
+                "sdrGamutWideness": 0,
+                "transform": "Normal",
+                "uuid": "077431e5-4e8b-4820-a59c-a7bf420bff9e",
                 "vrrPolicy": "Never",
                 "wideColorGamut": false
             }
@@ -472,6 +499,36 @@
                             "y": 0
                         },
                         "priority": 2,
+                        "replicationSource": ""
+                    }
+                ]
+            },
+            {
+                "lidClosed": false,
+                "outputs": [
+                    {
+                        "enabled": true,
+                        "outputIndex": 6,
+                        "position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "priority": 0,
+                        "replicationSource": ""
+                    }
+                ]
+            },
+            {
+                "lidClosed": true,
+                "outputs": [
+                    {
+                        "enabled": true,
+                        "outputIndex": 6,
+                        "position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "priority": 0,
                         "replicationSource": ""
                     }
                 ]

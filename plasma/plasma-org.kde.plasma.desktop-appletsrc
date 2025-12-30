@@ -4,40 +4,6 @@ RightButton;NoModifier=org.kde.contextmenu
 [ActionPlugins][1]
 RightButton;NoModifier=org.kde.contextmenu
 
-[Containments][1]
-ItemGeometries-1024x768=
-ItemGeometries-1440x2560=
-ItemGeometries-2560x1440=
-ItemGeometries-3840x2160=
-ItemGeometries-640x480=
-ItemGeometriesHorizontal=
-ItemGeometriesVertical=
-activityId=175be51b-7e32-4f03-8bf0-b2614984d4f4
-formfactor=0
-immutability=1
-lastScreen=0
-location=0
-plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
-
-[Containments][1][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
-
-[Containments][1][General]
-ToolBoxButtonState=topcenter
-ToolBoxButtonX=1344
-ToolBoxButtonY=48
-positions={"1440x2560":[],"2560x1440":[],"3840x2160":[]}
-
-[Containments][1][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/wallpapers/ForestRays/ForestRays.jpg
-SlidePaths=/usr/share/wallpapers/
-
-[Containments][1][Wallpaper][org.kde.potd][General]
-FillMode=2
-Provider=flickr
-
 [Containments][2]
 activityId=
 formfactor=2
@@ -112,34 +78,6 @@ plugin=org.kde.plasma.panelspacer
 immutability=1
 plugin=org.kde.plasma.panelspacer
 
-[Containments][2][Applets][30]
-immutability=1
-plugin=org.kde.plasma.weather
-
-[Containments][2][Applets][30][Configuration]
-PreloadWeight=100
-configMigrated=true
-popupHeight=323
-popupWidth=338
-
-[Containments][2][Applets][30][Configuration][Appearance]
-showTemperatureInCompactMode=true
-
-[Containments][2][Applets][30][Configuration][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
-
-[Containments][2][Applets][30][Configuration][Units]
-pressureUnit=5008
-speedUnit=9000
-temperatureUnit=6002
-visibilityUnit=2007
-
-[Containments][2][Applets][30][Configuration][WeatherStation]
-placeDisplayName=Daytona Beach, United States, US
-placeInfo=Daytona Beach, United States, US|4152872
-provider=bbcukmet
-
 [Containments][2][Applets][31]
 immutability=1
 plugin=org.kde.plasma.systemmonitor.net
@@ -211,7 +149,7 @@ plugin=org.kde.plasma.kicker
 
 [Containments][2][Applets][36][Configuration]
 PreloadWeight=100
-popupHeight=440
+popupHeight=300
 popupWidth=300
 
 [Containments][2][Applets][36][Configuration][ConfigDialog]
@@ -228,6 +166,28 @@ global=Alt+F1
 
 [Containments][2][Applets][36][Shortcuts]
 global=Alt+F1
+
+[Containments][2][Applets][40]
+immutability=1
+plugin=weather.widget.plus
+
+[Containments][2][Applets][40][Configuration]
+PreloadWeight=75
+popupHeight=560
+popupWidth=800
+
+[Containments][2][Applets][40][Configuration][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
+
+[Containments][2][Applets][40][Configuration][Location]
+firstRun=false
+places=[{"providerId":"owm","placeIdentifier":"4176559","placeAlias":"Daytona Beach, FL","timezoneID":-1},{"providerId":"owm","placeIdentifier":"5600890","placeAlias":"Middleton, ID","timezoneID":-1},{"providerId":"owm","placeIdentifier":"5809844","placeAlias":"Seattle, WA","timezoneID":-1}]
+
+[Containments][2][Applets][40][Configuration][Units]
+pressureType=inHg
+temperatureType=fahrenheit
+windSpeedType=mph
 
 [Containments][2][Applets][5]
 immutability=1
@@ -344,80 +304,39 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][2][Applets][7][Applets][38][Configuration]
-PreloadWeight=0
+PreloadWeight=5
 
 [Containments][2][Applets][7][Applets][9]
 immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][2][Applets][7][Applets][9][Configuration]
-PreloadWeight=85
+PreloadWeight=90
 
 [Containments][2][Applets][7][Configuration]
 PreloadWeight=100
 
 [Containments][2][Applets][7][General]
-extraItems=org.kde.plasma.notifications,org.kde.plasma.battery,org.kde.plasma.mediacontroller,org.kde.plasma.clipboard,org.kde.plasma.brightness,org.kde.plasma.networkmanagement,org.kde.plasma.cameraindicator,org.kde.kscreen,org.kde.plasma.vault,org.kde.plasma.manage-inputmethod,org.kde.plasma.devicenotifier,org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.printmanager,org.kde.plasma.weather
-knownItems=org.kde.plasma.notifications,org.kde.plasma.battery,org.kde.plasma.mediacontroller,org.kde.plasma.clipboard,org.kde.plasma.brightness,org.kde.plasma.networkmanagement,org.kde.plasma.cameraindicator,org.kde.kscreen,org.kde.plasma.vault,org.kde.plasma.manage-inputmethod,org.kde.plasma.devicenotifier,org.kde.plasma.volume,org.kde.plasma.bluetooth,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.printmanager,org.kde.plasma.weather
+extraItems=org.kde.plasma.notifications,org.kde.plasma.battery,org.kde.plasma.mediacontroller,org.kde.plasma.clipboard,org.kde.plasma.brightness,org.kde.plasma.cameraindicator,org.kde.plasma.manage-inputmethod,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.bluetooth
+knownItems=org.kde.plasma.notifications,org.kde.plasma.battery,org.kde.plasma.mediacontroller,org.kde.plasma.clipboard,org.kde.plasma.brightness,org.kde.plasma.cameraindicator,org.kde.plasma.manage-inputmethod,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.bluetooth
 
 [Containments][2][General]
-AppletOrder=36;6;25;31;32;5;28;20;30;27;7;21
+AppletOrder=36;6;25;31;32;5;28;20;40;27;7;21
 
-[Containments][22]
-ItemGeometries-2560x1440=
+[Containments][38]
+ItemGeometries-1800x1125=
 ItemGeometriesHorizontal=
-ItemGeometriesVertical=
-activityId=175be51b-7e32-4f03-8bf0-b2614984d4f4
+activityId=dc17dc8e-8b64-4db3-9943-0b48a153be59
 formfactor=0
 immutability=1
-lastScreen=1
+lastScreen=0
 location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
-[Containments][22][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
-
-[Containments][22][General]
-positions={"2560x1440":[]}
-
-[Containments][22][Wallpaper][org.kde.image][General]
+[Containments][38][Wallpaper][org.kde.image][General]
 Image=file:///usr/share/wallpapers/ForestRays/ForestRays.jpg
 SlidePaths=/usr/share/wallpapers/
-
-[Containments][23]
-ItemGeometries-1440x2560=
-ItemGeometries-2560x1440=
-ItemGeometriesHorizontal=
-ItemGeometriesVertical=
-activityId=175be51b-7e32-4f03-8bf0-b2614984d4f4
-formfactor=0
-immutability=1
-lastScreen=2
-location=0
-plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
-
-[Containments][23][ConfigDialog]
-DialogHeight=540
-DialogWidth=720
-
-[Containments][23][General]
-positions={"1440x2560":[],"1920x2160":[],"2560x1440":[],"480x640":[]}
-
-[Containments][23][Wallpaper][org.kde.image][General]
-Image=file:///usr/share/wallpapers/ForestRays/ForestRays.jpg
-SlidePaths=/usr/share/wallpapers/
-
-[Containments][37]
-activityId=175be51b-7e32-4f03-8bf0-b2614984d4f4
-formfactor=0
-immutability=1
-lastScreen=3
-location=0
-plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
 
 [ScreenMapping]
 itemsOnDisabledScreens=

@@ -1,8 +1,8 @@
 # Dark Forest Glassmorphism Theme
 
 # Font
-font-family = Iosevka Nerd Font Mono
-font-size = 21
+font-family = JetBrainsMono Nerd Font
+font-size = 14
 
 # Window
 window-decoration = true
@@ -38,3 +38,4 @@ palette = 12=#6d8fa0
 palette = 13=#9d82a8
 palette = 14=#739999
 palette = 15=#e8ead6
+keybind = shift+enter=text:\x1b\r

@@ -1,6 +1,7 @@
 [ActivityManager]
 _k_friendly_name=Activity Manager
 switch-to-activity-175be51b-7e32-4f03-8bf0-b2614984d4f4=none,none,Switch to activity "Default"
+switch-to-activity-dc17dc8e-8b64-4db3-9943-0b48a153be59=none,none,Switch to activity "Default"
 
 [KDE Keyboard Layout Switcher]
 Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,Switch to Last-Used Keyboard Layout
@@ -220,6 +221,8 @@ stopmedia=Media Stop,Media Stop,Stop media playback
 6BFA3163C0B0E9347AE94DA96748A035-toggleInjection=none,none,Toggle userscript injection
 6BFA3163C0B0E9347AE94DA96748A035-updateScripts=none,none,Update all scripts
 6BFA3163C0B0E9347AE94DA96748A035-updateScriptsInTab=none,none,Update current tab's scripts
+D08B3643F77F9F8A3441A1077B966718-enter-picker-mode=none,none,Create a custom filter
+D08B3643F77F9F8A3441A1077B966718-enter-zapper-mode=none,none,Remove an element
 _k_friendly_name=org.chromium.Chromium
 
 [org_kde_powerdevil]
