@@ -5,7 +5,18 @@ DOTS_DIR=$(pwd)
 # -- Arch
 
 # install base packages
-sudo pacman -Sy cmake clang curl wget zsh git rustup man-db neovim neovide ghostty fakeroot debugedit stylua
+sudo pacman -Sy --needed \
+    base-devel \
+    cmake clang curl wget zsh git rustup man-db neovim neovide ghostty fakeroot debugedit stylua \
+    plasma-meta sddm \
+    networkmanager \
+    gnupg openssh \
+    ripgrep fd unzip \
+    ttf-jetbrains-mono-nerd
+
+# enable system services
+sudo systemctl enable sddm
+sudo systemctl enable NetworkManager
 
 #install omzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
