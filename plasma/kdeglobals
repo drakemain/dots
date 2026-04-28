@@ -105,11 +105,7 @@ ForegroundPositive=122,154,101
 ForegroundVisited=157,130,168
 
 [General]
-BrowserApplication=brave-browser.desktop
 ColorSchemeHash=fe70f813ad0980d92245d002e82cf9791d4cea2e
-
-[KDE]
-LookAndFeelPackage=org.kde.breezedark.desktop
 
 [KFileDialog Settings]
 Allow Expansion=false
@@ -127,9 +123,6 @@ Sort hidden files last=false
 Sort reversed=false
 Speedbar Width=140
 View Style=DetailTree
-
-[KScreen]
-ScreenScaleFactors=DP-1=1;DP-2=1;DP-3=1;
 
 [WM]
 activeBackground=26,31,26
