@@ -5,7 +5,6 @@ return {
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
-      "jay-babu/mason-nvim-dap.nvim",
     },
     keys = {
       { "<F5>", desc = "Debug: Continue" },
@@ -17,11 +16,6 @@ return {
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
-
-      require("mason-nvim-dap").setup({
-        ensure_installed = { "codelldb", "cppdbg" },
-        automatic_installation = true,
-      })
 
       dapui.setup()
 

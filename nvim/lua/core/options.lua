@@ -49,3 +49,8 @@ opt.undofile = true
 opt.updatetime = 250
 opt.timeoutlen = 1000
 bo.syntax = 'on'
+
+-- Providers: pin Python to system, disable unused Ruby/Perl
+g.python3_host_prog = '/usr/bin/python3'
+g.loaded_ruby_provider = 0
+g.loaded_perl_provider = 0

@@ -1,23 +1,5 @@
 -- LSP and Completion Plugins
 return {
-  -- Mason for installing LSP servers and tools
-  {
-    "williamboman/mason.nvim",
-    config = true,
-  },
-
-  {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    dependencies = { "williamboman/mason.nvim" },
-    config = function()
-      require('mason-tool-installer').setup({
-        -- Only install lua-language-server via Mason
-        -- clangd and stylua are installed system-wide
-        ensure_installed = { 'lua-language-server' }
-      })
-    end,
-  },
-
   -- Fidget for LSP progress notifications
   {
     'j-hui/fidget.nvim',
@@ -115,15 +97,14 @@ return {
 
   {
     "mrcjkb/rustaceanvim",
-    version = "^5",
+    version = "^9",
     lazy = false,
     ft = { "rust" },
     config = function()
-      -- Configure rust-analyzer via rustaceanvim
       vim.g.rustaceanvim = {
         server = {
+          capabilities = require('cmp_nvim_lsp').default_capabilities(),
           on_attach = function(client, bufnr)
-            -- Call the global LSP keymaps setup
             _G.setup_lsp_keymaps(bufnr)
           end,
           settings = {

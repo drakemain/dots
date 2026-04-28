@@ -7,11 +7,11 @@ DOTS_DIR=$(pwd)
 # install base packages
 sudo pacman -Sy --needed \
     base-devel \
-    cmake clang curl wget zsh git rustup man-db neovim neovide ghostty fakeroot debugedit stylua \
+    cmake clang curl wget zsh git rustup man-db neovim neovide ghostty fakeroot debugedit stylua tree-sitter-cli lua-language-server python-pynvim \
     plasma-meta sddm \
     networkmanager \
     gnupg openssh \
-    ripgrep fd unzip \
+    ripgrep fd unzip wl-clipboard \
     ttf-jetbrains-mono-nerd
 
 # enable system services
@@ -45,7 +45,9 @@ sed -i "s/signingkey = .*/signingkey = $GPG_KEY_ID/" ./.gitconfig
 # copy configs
 mkdir -p ~/.config/nvim/
 mkdir -p ~/.config/ghostty/
+mkdir -p ~/.config/neovide/
 cp -r ./ghostty/* ~/.config/ghostty/
+cp -r ./neovide/* ~/.config/neovide/
 cp ./.zshrc ~/.zshrc
 cp -r ./.oh-my-zsh.local/ ~/.oh-my-zsh.local/
 cp ./.vimrc ~/.vimrc
@@ -71,6 +73,7 @@ cd $DOTS_DIR
 # install nvm, node lts
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install --lts
+npm install -g neovim
 
 mkdir -p ~/.vim/bundle
 mkdir -p ~/.config/urxvt/colorschemes

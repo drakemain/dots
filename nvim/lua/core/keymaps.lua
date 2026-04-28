@@ -21,7 +21,7 @@ local function floaterm_toggle()
   -- Check if any floaterm buffers exist
   local floaterm_exists = false
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, 'filetype') == 'floaterm' then
+    if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_get_option_value('filetype', { buf = buf }) == 'floaterm' then
       floaterm_exists = true
       break
     end

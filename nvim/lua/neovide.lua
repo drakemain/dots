@@ -2,12 +2,12 @@ local neovide = {}
 
 local function IncrementNeovideScaleFactor()
   vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor or 1.0) + 0.1
-  print(string.format("GUI Scale: %s", vim.g.neovide_scale_factor))
+  vim.notify(string.format("GUI Scale: %s", vim.g.neovide_scale_factor), vim.log.levels.INFO)
 end
 
 local function DecrementNeovideScaleFactor()
   vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor or 1.0) - 0.1
-  print(string.format("GUI Scale: %s", vim.g.neovide_scale_factor))
+  vim.notify(string.format("GUI Scale: %s", vim.g.neovide_scale_factor), vim.log.levels.INFO)
 end
 
 local function set_keymaps()
