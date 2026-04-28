@@ -93,6 +93,7 @@ if [ "$MODE" = "pull" ]; then
   sync_dir ~/.oh-my-zsh.local ./.oh-my-zsh.local
   sync_dir ~/.config/nvim ./nvim
   sync_dir ~/.config/ghostty ./ghostty
+  sync_dir ~/.config/neovide ./neovide
 
   # KDE Plasma configs
   if command -v plasmashell &> /dev/null; then

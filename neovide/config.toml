@@ -1,0 +1,18 @@
+# Neovide Configuration
+
+# Window settings
+frame = "full"           # "full", "none", "buttonless", "transparent"
+maximized = false
+vsync = true
+
+# Font settings (can also be set via vim.o.guifont in nvim)
+# font.normal = ["Iosevka Nerd Font Mono"]
+# font.size = 21.0
+
+# Behavior
+fork = true              # Detach from terminal when launched
+idle = true              # Reduce CPU when not in focus
+mouse-cursor-icon = "arrow"
+no-multigrid = false
+srgb = false
+tabs = true
