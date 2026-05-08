@@ -1,18 +1,13 @@
 -- Drake's Neovim Configuration
--- Organized structure for maintainability
 
--- Ensure config files are loaded from config dir
 package.path = vim.fn.stdpath('config') .. '/lua/?.lua;' .. package.path
 
--- Load core configuration
-require('core.options')      -- Vim options
-require('core.autocmds')     -- Autocommands
-require('core.keymaps')      -- Keymaps
+require('core.options')
+require('core.autocmds')
+require('core.keymaps')
+require('core.neovide').setup()
 
--- Load Neovide-specific settings
-require('neovide').setup()
-
--- Setup lazy.nvim plugin manager
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
@@ -26,12 +21,9 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Load plugins
 require("lazy").setup("plugins", {
   rocks = { enabled = false },
-  change_detection = {
-    notify = false,
-  },
+  change_detection = { notify = false },
   performance = {
     rtp = {
       disabled_plugins = {
@@ -47,3 +39,6 @@ require("lazy").setup("plugins", {
     },
   },
 })
+
+-- LSP setup runs after lazy so cmp_nvim_lsp is on the rtp
+require('core.lsp')
